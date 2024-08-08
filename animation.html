@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Animation</title>
+        <style>
+            #cw {
+                position: fixed;
+                z-index: -1;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+                background-color: rgb(0, 0, 0, 0.5);
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="cw">Rotierende Punkte</canvas>
+        <script>
+            // canvas und Zeichenkontext holen
+            const canvas = document.getElementById("cw");
+            const ctx = canvas.getContext("2d");
+            // Deckkraft der partikel
+            ctx.globalAlpha = 0.5;
+
+            // Startposition des Kreises (Mauszeiger) in der Mitte
+            const cursor = {x: innerWidth/2, y: innerHeight/2};
+
+            // Partikel-Array initialisieren und Punkte erstellen
+            let particleArray = [];
+            generateParticles(500);
+
+            // Funktion um Partikel zu generieren
+            function generateParticles(amount) {
+                for (let i = 0; i < amount; i++) {
+                    particleArray[i] = new Particle(innerWidth/2, innerHeight/2, 2, generateColor(), 0.02, 7);
+                }
+            }
+
+            // Funktion, um einen Warp-Effekt auszulösen
+            let warpActive = false;
+            function triggerWarpEffect() {
+                warpActive = true;
+                setTimeout(() => {warpActive = false;}, 3000);
+            }
+
+            // Funktion um die Partikel zu konstruieren
+            function Particle(x, y, particleTrailWidth, strokeColor, rotateSpeed, warpFactor) {
+                // Eigenschaften der Partikel
+                this.x = x; // Position x
+                this.y = y; // Position y
+                this.particleTrailWidth = particleTrailWidth; // Breite des Partikel-Trails
+                this.strokeColor = strokeColor; // Farbe des Trails
+                this.theta = Math.random() * Math.PI * 2; // Verteilung der Partikel im Kreis
+                this.rotateSpeed = rotateSpeed; // Rotationsgeschwindigkeit
+                this.t = Math.random() * 400; // Zufälliger Radius
+                this.warpFactor = warpFactor;
+
+                // Funktion zum Drehen der Partikel
+                this.rotate = () => {
+                    const ls = {x: this.x, y: this.y}; // Speichert die vorherige Position
+                    this.theta += this.rotateSpeed; // Ändert den Winkel basierend auf der Rotationsgeschwindigkeit
+                    if (warpActive) {
+                        this.x = cursor.x + Math.cos(this.theta) * this.t * this.warpFactor;
+                        this.y = cursor.y + Math.sin(this.theta) * this.t * this.warpFactor;
+                    } else {
+                        this.x = cursor.x + Math.cos(this.theta) * this.t; // Berechnung der neuen x-Position
+                        this.y = cursor.y + Math.sin(this.theta) * this.t; // Berechnung der neuen y-Position
+                    }
+                    ctx.beginPath(); // Begin der Zeichnung
+                    ctx.lineWidth = this.particleTrailWidth; // Linien dicke
+                    ctx.strokeStyle = this.strokeColor; // Linien farbe
+                    ctx.moveTo(ls.x, ls.y); // Zeiger zum vorherigen Punkt
+                    ctx.lineTo(this.x, this.y); // Zeichnen einer Linie zum aktuellen Punkt
+                    ctx.stroke(); // Linie zeichnen
+                };
+            }
+
+            // Funktion für zufällige Farben der Partikel
+            function generateColor() {
+                let hexSet = "0123456789ABCDEF";
+                let finalHexString = "#";
+                for (let i = 0; i < 6; i++) {
+                    finalHexString += hexSet[Math.ceil(Math.random() * 15)];
+                }
+                return finalHexString;
+            }
+
+            // Grösse anpassen von canvas auf Fenster
+            function setSize() {
+                canvas.height = innerHeight;
+                canvas.width = innerWidth;
+            }
+
+            // Funktion für die Animationsschleife
+            function anim() {
+                // Animationsschleife
+                requestAnimationFrame(anim);
+
+                // Hintergrund neu zeichnen
+                ctx.fillStyle = "rgb(0,0,0,0.5)";
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                //Rotation aller Partikel
+                particleArray.forEach((particle) => particle.rotate());
+            }
+
+            // EventListener für den Klick
+            addEventListener("click", triggerWarpEffect);
+
+            // EventListener für die Mausbewegung
+            addEventListener("mousemove", (e) => {
+                cursor.x = e.clientX;
+                cursor.y = e.clientY;
+            });
+
+            addEventListener("touchmove", (e) => {
+                e.preventDefault();
+                cursor.x = e.touches[0].clientX;
+                cursor.y = e.touches[0].clientY;
+            });
+
+            // EventListener für die grösser
+            addEventListener("resize", () => setSize());
+
+            // Start der Animationsschleife
+            setSize();
+            anim();
+        </script>
+    </body>
+</html>
