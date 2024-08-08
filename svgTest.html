@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My life in weeks</title>
+    </head>
+    <body>
+        <svg id="lebensabschnitte" width="1040" height="1920"></svg>
+            <script>
+                const svg = document.getElementById('lebensabschnitte');
+                const lifeData = [
+                    {period: 'Kindheit & Grundschule', startYear: 0, endYear: 15},
+                    {period: 'Lehre', startYear: 16, endYear: 20},
+                    {period: 'BM', startYear: 21, endYear: 22},
+                    {period: 'Arbeit', startYear: 23, endYear: 26},
+                    {period: 'Bachelor', startYear: 27, endYear: 30},
+                    {period: 'Arbeit', startYear: 31, endYear: 55},
+                    {period: 'Genusszeit', startYear: 56, endYear: 90},
+                ];
+
+                for (let row = 0; row < 90; row++) {
+                    for (let col = 0; col < 52; col++) {
+                        const x = col * 9;
+                        const y = row * 9;
+                        const radius = 2;
+
+                        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                        circle.setAttribute('cx', x + radius);
+                        circle.setAttribute('cy', y + radius);
+                        circle.setAttribute('r', radius);
+                        circle.setAttribute('fill', '#ccc');
+
+                        svg.appendChild(circle);
+                    }
+                }
+
+                svg.addEventListener('mousemove', function(event) {
+                    const rect = svg.getBoundingClientRect();
+                    const mouseX = event.clientX - rect.left;
+                    const mouseY = event.clientY - rect.top;
+                    checkHoveredPeriod(mouseX, mouseY);
+                });
+
+
+                function checkHoveredPeriod(mouseX, mouseY) {
+                    const circles = document.querySelectorAll('circle'); // Alle Kreise im SVG
+
+                    circles.forEach(circle => {
+                        const circleX = parseFloat(circle.getAttribute('cx'));
+                        const circleY = parseFloat(circle.getAttribute('cy'));
+                        const radius = parseFloat(circle.getAttribute('r'));
+
+                        const distance = Math.sqrt(Math.pow(mouseX - circleX, 2) + Math.pow(mouseY - circleY, 2));
+
+                        if (distance <= radius) {
+                            circle.style.fill = 'red'; // Setze die Füllfarbe auf Rot (oder die gewünschte Hervorhebungsfarbe)
+                        } else {
+                            circle.style.fill = '#ccc'; // Setze die Füllfarbe zurück, wenn die Maus den Kreis verlässt
+                        }
+                    });
+                }
+            </script>
+    </body>
+</html>
