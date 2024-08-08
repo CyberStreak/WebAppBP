@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="bootstrap\bootstrap.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <script src="bootstrap\bootstrap.bundle.min.js"></script>
+    <script defer src="countProfessions.js"></script>
+    <script defer src="toggleTables.js"></script>
+    <title>Portfolio</title>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <button aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-bs-target="#navbarTogglerDemo01" data-bs-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <!--<a class="navbar-brand" href="img/icon.png"><img src="img/icon.png" alt="home" width="24"></a> -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<h1 class="text-center">Portfolio von Milan</h1>
+
+<div class="row">
+    <div class="col-4">
+        <aside>
+            <div class="card border-0" style="width: 65%" id="fotoHome">
+                <a href="gallery.html"><img alt="Da sollte ich sein" class="card-img-top" src="img/20200109_141412.jpg"></a>
+                <div class="card-body">
+                    <p class="card-text text-center">Ein Bild meinerseits 👋🏽</p>
+                </div>
+            </div>
+
+            <p class="text-center">
+                "Das unerschöpfliche Potenzial und die Leistunsfähigkeit des Menschen treiben mich an,
+                um diese mit den Möglichkeiten der Technik zu kombinieren und voranzutreiben.
+                Ich glaube das die Technologie unsere Fähigkeiten erweitern kann und somit die Welt positiv
+                beeinflussen kann."
+            </p>
+        </aside>
+    </div>
+
+    <div class="col">
+
+        <button id="toggleButton">Tabellen ausblenden</button>
+
+        <main class="container">
+            <div class="toggleArea">
+                <div class="row">
+                    <section class="col">
+                        <h2 class="text-center">Ausbildung</h2>
+                        <table class="table table-success table-bordered" id="table1">
+                            <tr>
+                                <th>Jahr</th>
+                                <th>Ausbildung</th>
+                            </tr>
+                            <tr>
+                                <td>2001 - 2010</td>
+                                <td>Grundschule</td>
+                            </tr>
+                            <tr>
+                                <td>2010 - 2014</td>
+                                <td>Lehre als Elektroinstallateur</td>
+                            </tr>
+                            <tr>
+                                <td>2015 - 2017</td>
+                                <td>Berufsbegleitende Berufsmaturität</td>
+                            </tr>
+                            <tr>
+                                <td>2021 - jetzt</td>
+                                <td>Studium als Medizininformatiker FHNW</td>
+                            </tr>
+                        </table>
+                    </section>
+
+                    <section class="col">
+                        <h2 class="text-center">Berufserfahrung</h2>
+                        <table class="table table-primary" id="table2">
+                            <tr>
+                                <th>Jahr</th>
+                                <th>Berufserfahrung</th>
+                            </tr>
+                            <tr>
+                                <td>2014 - 2017</td>
+                                <td>Elektroinstallateur angestellt über 4insiders</td>
+                            </tr>
+                            <tr>
+                                <td>2017 - 2019</td>
+                                <td>ibw AG, Wohlen</td>
+                            </tr>
+                            <tr class="table table-dark">
+                                <td>2019 - 2021</td>
+                                <td>Eltel AG, Suhr</td>
+                            </tr>
+                        </table>
+                    </section>
+                </div>
+            </div>
+
+            <section>
+                <h2>Skills</h2>
+                <dl>
+                    <dt>Coding</dt>
+                    <dd>- java</dd>
+                    <dd>- python</dd>
+                    <dd>- bisschen C & C++</dd>
+                    <dt>Windows</dt>
+                    <dt>Sport</dt>
+                    <dd>- Basketball</dd>
+                    <dd>- Fussball</dd>
+                    <dd>- Beachvolley</dd>
+                    <dd>- Snowboard</dd>
+                </dl>
+            </section>
+        </main>
+    </div>
+</div>
+</body>
+
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <div class="col-md-4 d-flex align-items-center">
+        <span class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+            &copy; 2023 Milan Eric
+        </span>
+    </div>
+</footer>
+
+</html>
