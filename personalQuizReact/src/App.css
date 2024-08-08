@@ -1,0 +1,32 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+body {
+  background-color: azure;
+  color: black;
+  font-family: "Times New Roman", fantasy;
+}
+
+.buttons {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.right {
+  background-color: green;
+  border: 1px solid black;
+}
+
+.wrong {
+  background-color: red;
+  border: 1px solid black;
+}
+
+.bild-titel {
+  font-family: "Century Gothic", sans-serif;
+}
