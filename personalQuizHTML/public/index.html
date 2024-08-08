@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="answers.js" defer></script>
+    <title>About me</title>
+</head>
+
+<body>
+
+<h1 class="text-center">Drei Dinge über Milan:</h1>
+
+<fieldset class="container border border-3">
+    <legend class="text-center">Bitte wähle etwas aus:</legend>
+    <div class="radioButtons">
+        <input type="radio" id="ersteAuswahl" name="things" value="wrong">
+        <label for="ersteAuswahl" class="sentences">Ich spielte Fussball in der 2. Liga inter</label>
+    </div>
+    <div class="radioButtons">
+        <input type="radio" id="zweiteAuswahl" name="things" value="wrong">
+        <label for="zweiteAuswahl" class="sentences">Ich habe ein Aquarium zu Hause</label>
+    </div>
+    <div class="radioButtons">
+        <input type="radio" id="dritteAuswahl" name="things" value="right">
+        <label for="dritteAuswahl" class="sentences">Ich trage gerne sportliche Kleider</label>
+    </div>
+    <p class="text-center" id="output"></p>
+</fieldset>
+
+
+
+<div class="card border-0" style="width: 40%" id="fotoHome">
+    <div class="card-body">
+        <p class="card-title text-center">Eins, Zwei oder Drei???</p>
+    </div>
+    <img src="img/dreiFragezeichen.png" alt="Drei Fragezeichen">
+</div>
+</body>
+
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <div class="col-md-4 d-flex align-items-center">
+        <span class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+            &copy; 2023 Milan Eric
+        </span>
+    </div>
+</footer>
+
+</html>

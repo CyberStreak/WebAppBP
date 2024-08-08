@@ -1,0 +1,31 @@
+body {
+    background-color: azure;
+    font-family: "Times New Roman", fantasy;
+}
+
+.sentences {
+    color: lightseagreen;
+    margin: 0 auto;
+}
+
+.radioButtons {
+    margin: 0 auto;
+    padding-left: 25%;
+}
+
+#fotoHome {
+    margin: 0 auto;
+    padding-top: 10px;
+    background-color: azure;
+}
+
+#output {
+    color: black;
+    font-size: 20px;
+    padding: 5px;
+    margin: 5px;
+}
+
+.card-text {
+    font-family: "Century Gothic", sans-serif;
+}
